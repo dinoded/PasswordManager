@@ -12,13 +12,13 @@ public class GeneratePasswordForm extends JDialog {
     private JCheckBox lowercaseCheckBox;
     private JCheckBox numbersCheckBox;
     private JCheckBox symbolsCheckBox;
-    private JComboBox<String> comboBox2; // Используем comboBox2 вместо comboBox1
+    private JComboBox<String> comboBox2;
     private JProgressBar progressBar1;
     private JSpinner spinner1;
     private JTextField textField1;
     private JButton searchButton;
     private JButton addButton;
-    private JLabel strengthLabel; // Новая метка для отображения силы пароля
+    private JLabel strengthLabel;
     private String[] passwordNames;
     private FormMain formMain;
     private String generatedPassword;
@@ -32,7 +32,7 @@ public class GeneratePasswordForm extends JDialog {
         // Устанавливаем содержимое панели и свойства формы
         setContentPane(panel1);
         setModal(true);
-        setResizable(true); // Разрешаем изменение размера формы
+        setResizable(true);
         getRootPane().setDefaultButton(generatePasswordButton);
 
         // Загружаем имена паролей в comboBox2
@@ -40,22 +40,21 @@ public class GeneratePasswordForm extends JDialog {
             comboBox2.addItem(name);
         }
 
-        spinner1.setModel(new SpinnerNumberModel(8, 1, 64, 1)); // Длина по умолчанию 8, мин 1, макс 64
+        spinner1.setModel(new SpinnerNumberModel(8, 1, 64, 1));
 
         generatePasswordButton.addActionListener(e -> generatePassword());
         searchButton.addActionListener(e -> searchPassword());
         addButton.addActionListener(e -> addPasswordToTable());
-        addButton.setEnabled(false); // Изначально отключаем кнопку добавления
+        addButton.setEnabled(false);
 
         // Добавляем слушатель изменений к спиннеру для обновления сложности пароля
         spinner1.addChangeListener(e -> updatePasswordStrength());
 
-        // Настройка автозаполнения
         setupAutoComplete();
 
-        pack(); // Упаковываем компоненты
-        setSize(600, 400); // Устанавливаем размер формы
-        setLocationRelativeTo(owner); // Центрируем форму относительно владельца
+        pack();
+        setSize(600, 400);
+        setLocationRelativeTo(owner);
     }
 
     private void setupAutoComplete() {
