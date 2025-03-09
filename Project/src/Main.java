@@ -15,8 +15,8 @@ public class Main {
                 frame.setContentPane(loginForm.getPanel1());
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
-                frame.setSize(400, 200); // Устанавливаем размер формы
-                frame.setLocationRelativeTo(null); // Центрируем форму на экране
+                frame.setSize(400, 200);
+                frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
             } else {
                 System.out.println("Файл не выбран, завершение программы.");
