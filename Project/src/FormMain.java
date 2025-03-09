@@ -36,11 +36,11 @@ public class FormMain extends JFrame {
     private TableRowSorter<TableModel> sorter;
     private JPopupMenu suggestionPopup;
 
-    private final int shift = 3; // Используем сдвиг для шифра Цезаря
+    private final int shift = 3;
 
     public FormMain(File file, String masterKey, boolean validLogin) {
         this.currentFile = file;
-        initComponents(); // Инициализируем компоненты, созданные в UI Designer
+        initComponents();
         loadDataFromFile(file, masterKey, validLogin);
         setupClearButton();
         setupAddButton();
@@ -68,7 +68,7 @@ public class FormMain extends JFrame {
         DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return true; // Все ячейки редактируемы
+                return true;
             }
         };
         table1.setModel(model);
@@ -108,7 +108,7 @@ public class FormMain extends JFrame {
     private void setupAddButton() {
         addButton.addActionListener(e -> {
             DefaultTableModel model = (DefaultTableModel) table1.getModel();
-            model.addRow(new Object[]{"", "", "", "", ""}); // Добавляем пустую строку
+            model.addRow(new Object[]{"", "", "", "", ""}); 
         });
     }
 
@@ -408,7 +408,7 @@ public class FormMain extends JFrame {
             // Сначала записываем дату последней расшифровки
             lastDecryptionDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date());
             writer.write("Last Decryption: " + lastDecryptionDate + "\n");
-            lastDecryptionLabel.setText("Last Decryption: " + lastDecryptionDate); // Обновляем метку
+            lastDecryptionLabel.setText("Last Decryption: " + lastDecryptionDate);
 
             DefaultTableModel model = (DefaultTableModel) table1.getModel();
             for (int i = 0; i < model.getRowCount(); i++) {
@@ -445,7 +445,7 @@ public class FormMain extends JFrame {
     }
 
     private String decrypt(String data, int shift) {
-        return encrypt(data, 26 - shift); // Обратное шифрование шифра Цезаря для букв
+        return encrypt(data, 26 - shift);
     }
 
     private String generateRandomPassword(SecureRandom random, int length) {
